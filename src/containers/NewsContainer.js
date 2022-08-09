@@ -4,7 +4,7 @@ import NewsDetail from '../components/NewsDetail';
 
 const NewsContainer = () => {
 
-    // const [newsStories, setNewsStories] = useState([]);
+    const [newsStories, setNewsStories] = useState([]);
     const [selectedStory, setSelectedStory] = useState(null);
     const [top20, setTop20] = useState([]);
 
@@ -22,7 +22,7 @@ const NewsContainer = () => {
             
             console.log(promisedStories)
             Promise.all(promisedStories).then((data) => {
-                setTop20(data);
+                setNewsStories(data);
             })
         } 
         )
@@ -35,7 +35,7 @@ const NewsContainer = () => {
     return (
         <div>
             <h1>News</h1>
-            <NewsSelect newsStories={ top20 } handleSelectChange={ handleSelectChange } />
+            <NewsSelect newsStories={ newsStories } handleSelectChange={ handleSelectChange } />
             { selectedStory ? <NewsDetail newsStory={ selectedStory } /> : null }
         </div>
     )
